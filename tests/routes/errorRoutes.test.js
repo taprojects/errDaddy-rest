@@ -4,6 +4,7 @@ const app = require('../../lib/app');
 const mongoose = require('mongoose');
 const connect = require('../../lib/utils/connect');
 const { seedData } = require('../utils/seedData');
+const Err = require('../../lib/models/Err');
 
 
 beforeAll(() => connect());
@@ -38,7 +39,6 @@ describe('error route tests', () => {
   });
 
   it('gets errors based on hashtag', () => {
-    seedData();
     return request(app)
       .get('/api/v1/error/react')
       .then(res => {
@@ -55,5 +55,19 @@ describe('error route tests', () => {
       });
   });
 
-  
+  it('gets error by _id', async() => {
+    const err = await Err.findOne();
+    return request(app)
+      .get(`/api/v1/error/detail/${err._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          title: expect.any(String),
+          error: expect.any(String),
+          description: expect.any(String),
+          solution: expect.any(String),
+          tags: expect.any(Array)
+        });
+      });
+  });
 });
