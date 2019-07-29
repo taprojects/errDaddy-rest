@@ -74,7 +74,7 @@ describe('error route tests', () => {
       });
   });
 
-  it('gets all erros', async() => {
+  it('gets all errors', async() => {
     return request(app)
       .get('/api/v1/error/')
       .then(res => {
@@ -93,7 +93,7 @@ describe('error route tests', () => {
 
   it('gets 20 most recent error entries', async() => {
     return request(app)
-    
+
       .get('/api/v1/error/recent')
       .then(res => {
         expect(res.body.length).toEqual(20);
