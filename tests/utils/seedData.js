@@ -13,7 +13,6 @@ const tags = [
 function seedData(errCount = 50) {
   const errs = [...Array(errCount)].map(() => ({
     title: chance.name(),
-    error: chance.name(),
     description: chance.address(),
     solution: chance.animal(),
     tags: [chance.pickone(tags), chance.pickone(tags), chance.pickone(tags)]

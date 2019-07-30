@@ -21,7 +21,6 @@ describe('error route tests', () => {
       .post('/api/v1/error')
       .send({
         title: 'title',
-        error: '404',
         description: 'description',
         solution: 'solution',
         tags: ['tag1', 'tag2', 'tag3']
@@ -30,11 +29,12 @@ describe('error route tests', () => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           title: 'title',
-          error: '404',
           description: 'description',
           solution: 'solution',
           tags: ['tag1', 'tag2', 'tag3'],
-          time: expect.any(String)
+          time: expect.any(String),
+          good: 0,
+          bad: 0
         });
       });
   });
@@ -48,11 +48,12 @@ describe('error route tests', () => {
         expect(res.body[0]).toEqual({
           _id: expect.any(String),
           title: expect.any(String),
-          error: expect.any(String),
           description: expect.any(String),
           solution: expect.any(String),
           tags: expect.any(Array),
-          time: expect.any(String)
+          time: expect.any(String),
+          good: 0,
+          bad: 0
         });
       });
   });
@@ -65,11 +66,12 @@ describe('error route tests', () => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           title: expect.any(String),
-          error: expect.any(String),
           description: expect.any(String),
           solution: expect.any(String),
           tags: expect.any(Array),
-          time: expect.any(String)
+          time: expect.any(String),
+          good: 0,
+          bad: 0
         });
       });
   });
@@ -82,11 +84,12 @@ describe('error route tests', () => {
         expect(res.body[0]).toEqual({
           _id: expect.any(String),
           title: expect.any(String),
-          error: expect.any(String),
           description: expect.any(String),
           solution: expect.any(String),
           tags: expect.any(Array),
-          time: expect.any(String)
+          time: expect.any(String),
+          good: 0,
+          bad: 0
         });
       });
   });
@@ -100,11 +103,12 @@ describe('error route tests', () => {
         expect(res.body[0]).toEqual({
           _id: expect.any(String),
           title: expect.any(String),
-          error: expect.any(String),
           description: expect.any(String),
           solution: expect.any(String),
           tags: expect.any(Array),
-          time: expect.any(String)
+          time: expect.any(String),
+          good: 0,
+          bad: 0
         });
       });
   });
