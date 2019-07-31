@@ -112,4 +112,12 @@ describe('error route tests', () => {
         });
       });
   });
+
+  it('gets all distinct tags', async() => {
+    return request(app)
+      .get('/api/v1/error/allTags')
+      .then(res => {
+        expect(res.body).toEqual(['fetch', 'formDaddy', 'input', 'javascript', 'node', 'react']);
+      });
+  });
 });
