@@ -96,7 +96,6 @@ describe('error route tests', () => {
 
   it('gets 20 most recent error entries', async() => {
     return request(app)
-
       .get('/api/v1/error/recent')
       .then(res => {
         expect(res.body.length).toEqual(20);
@@ -118,6 +117,24 @@ describe('error route tests', () => {
       .get('/api/v1/error/allTags')
       .then(res => {
         expect(res.body).toEqual(['fetch', 'formDaddy', 'input', 'javascript', 'node', 'react']);
+      });
+  });
+
+  it('increases error goods by 1', async() => {
+    const err = await Err.findOne();
+    return request(app)
+      .patch(`/api/v1/error/good/${err._id}`)
+      .then(res => {
+        expect(res.body.good).toEqual(1);
+      });
+  });
+
+  it('increases error bads by 1', async() => {
+    const err = await Err.findOne();
+    return request(app)
+      .patch(`/api/v1/error/bad/${err._id}`)
+      .then(res => {
+        expect(res.body.bad).toEqual(1);
       });
   });
 });
