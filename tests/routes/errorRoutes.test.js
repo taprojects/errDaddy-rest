@@ -39,10 +39,11 @@ describe('error route tests', () => {
       });
   });
 
-  it('gets errors based on hashtag', () => {
+  it.only('gets errors based on hashtag', () => {
     return request(app)
       .get('/api/v1/error/react')
       .then(res => {
+        console.log(res.body);
         expect(res.body).toEqual(expect.any(Array));
         expect(res.body[0].tags.includes('react')).toEqual(true);
         expect(res.body[0]).toEqual({
