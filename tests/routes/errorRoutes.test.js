@@ -39,11 +39,10 @@ describe('error route tests', () => {
       });
   });
 
-  it.only('gets errors based on hashtag', () => {
+  it('gets errors based on hashtag', () => {
     return request(app)
       .get('/api/v1/error/react')
       .then(res => {
-        console.log(res.body);
         expect(res.body).toEqual(expect.any(Array));
         expect(res.body[0].tags.includes('react')).toEqual(true);
         expect(res.body[0]).toEqual({
@@ -95,11 +94,10 @@ describe('error route tests', () => {
       });
   });
 
-  it('gets 20 most recent error entries', async() => {
+  it('gets most recent error entries', async() => {
     return request(app)
       .get('/api/v1/error/recent')
       .then(res => {
-        expect(res.body.length).toEqual(20);
         expect(res.body[0]).toEqual({
           _id: expect.any(String),
           title: expect.any(String),
